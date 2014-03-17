@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Music Page</h1>
+{{=twentieth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_music')}}"> Music Sales </a></span>
+
+
+</p>

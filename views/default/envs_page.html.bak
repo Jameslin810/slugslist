@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Evironmental Studies Page</h1>
+{{=twelfth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_envs')}}"> Environmental Studies Sales </a></span>
+
+
+</p>

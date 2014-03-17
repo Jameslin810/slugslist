@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+<style>
+ .top_header{
+         text-align: center;
+}
+</style>
+
+
+<div1>
+    <h1 class = "top_header">
+        Select Subject
+    </h1>
+    <p>
+        Welcome to Slugzlist, where UCSC students can buy, sell, OR trade books and other miscellaneous items<br>
+        <i><b>MAKE SURE YOU BUY, SELL, OR TRADE ON CAMPUS BEWARE OF SCAMS</b></i>
+    </p>
+    <span> <a class="btn" href = "{{=URL('default', 'Major_Books')}}">Art</a></span>
+    <span> <a class="btn" href = "{{=URL('default', 'view_posting')}}">Computer Engineering</a></span>
+    <span> <a class="btn" href = "{{=URL('default', 'view_posting')}}">Computer Science</a></span>
+    <span> <a class="btn" href = "{{=URL('default', 'view_posting')}}">Business Management Economics</a></span>
+    <span> <a class="btn" href = "{{=URL('default', 'view_posting')}}">English</a></span>
+    <span> <a class="btn" href = "{{=URL('default', 'view_posting')}}">TIM</a></span>
+
+</div1>

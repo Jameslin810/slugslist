@@ -1,0 +1,92 @@
+{{extend 'layout.html'}}
+
+<style>
+ .top_header{
+         text-align: center;
+}
+
+    .image{
+        background-repeat:no-repeat;
+        background-position:center;
+        background-size:1500px 1400px
+    }
+    .disclaimer{
+       color:#FF0000;
+    }
+    
+</style>
+
+    <h1 class = "top_header">
+        SlugzList
+    </h1>
+<body class = "image" background="{{=URL('download', args = image.photo)}}">
+</body>
+<div1>
+
+    <p>
+        Welcome to Slugzlist, where UCSC students can buy, sell, or trade textbooks<br>
+        <i><b>MAKE SURE YOU BUY, SELL, OR TRADE ON CAMPUS. BEWARE OF SCAMS</b></i><br><br>
+        <b>Subjects:</b>
+    </p>
+    <span> <a class ="btn" href= "{{=URL('default', 'anthro_page')}}"> Anthropology</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'biochem_page')}}"> Biochemistry</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'bio_page')}}"> Biology </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'chem_page')}}"> Chemistry </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'ce_page')}}"> Computer Engineering </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'cs_page')}}"> Computer Science </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'earth_page')}}"> Earth Sciences</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'econ_page')}}"> Economics</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'edu_page')}}"> Education</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'envs_page')}}"> Enviromental Studies</a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'film_page')}}"> Film </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'hist_page')}}"> History </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'havc_page')}}"> History of Arts and Visual Culture </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'lals_page')}}"> Latin American and Latino Studies </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'ling_page')}}"> Linguistics </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'lit_page')}}"> Literature </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'marine_page')}}"> Marine Biology </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'math_page')}}"> Mathematics </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'music_page')}}"> Music </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'phil_page')}}"> Philosophy </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'physics_page')}}"> Physics </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'politics_page')}}"> Politics </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'psych_page')}}"> Psychology </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'socio_page')}}"> Sociology </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'tim_page')}}"> Technology and Information Management </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'writing_page')}}"> Writing </a></span>
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'misc_page')}}"> Other and Miscellaneous </a></span>
+    <br>    <br>    <br>    <br>    <br>    <br>
+
+</div1>
+
+
+<div2>
+    
+    <p class = "disclaimer" ><i><b>Disclaimer: We are not responsible for any theft upon trade, sale, or purchase. Be smart and vigilant when you meet up. Go with a friend if needed.</b></i> </p>
+</div2>

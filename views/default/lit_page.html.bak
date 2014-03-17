@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Literature Page</h1>
+{{=seventeenth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_lit')}}"> Literature Sales </a></span>
+
+
+</p>

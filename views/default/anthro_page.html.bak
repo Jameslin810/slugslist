@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Anthro Page</h1>
+{{=second_table}}
+
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_anthro')}}"> Anthropology Sales </a></span>
+
+
+</p>

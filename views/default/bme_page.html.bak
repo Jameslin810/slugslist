@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+
+<h1>Business Management Economics Sales Page</h1>
+{{=third_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_bme')}}"> Business Management Economics's Sales </a></span>
+</p>

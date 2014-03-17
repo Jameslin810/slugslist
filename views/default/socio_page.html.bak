@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Sociology Page</h1>
+{{=twentyfifth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_socio')}}"> Sociology Sales </a></span>
+
+
+</p>

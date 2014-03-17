@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Psychology Page</h1>
+{{=twentyfourth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_psych')}}"> Psychology Sales </a></span>
+
+
+</p>

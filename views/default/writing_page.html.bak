@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Writing Page</h1>
+{{=twentyseventh_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_writing')}}"> Writing Sales </a></span>
+
+
+</p>

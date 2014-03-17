@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<p>
+    time to fuck shit up 
+</p>
+<body>
+    {{=message}}
+</body>
+
+<h1>
+    cant touch htis
+</h1>

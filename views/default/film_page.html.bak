@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Film Page</h1>
+{{=thirteenth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_film')}}"> Film Sales </a></span>
+
+
+</p>

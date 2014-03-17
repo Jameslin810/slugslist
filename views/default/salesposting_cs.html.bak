@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+{{=form_eight}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_cs')}}"> Computer Science Sales </a></span>
+
+
+</p>

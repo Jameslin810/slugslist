@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Physics Page</h1>
+{{=twentysecondth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_physics')}}"> Physics Sales </a></span>
+
+
+</p>

@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Politics Page</h1>
+{{=twentythird_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_politics')}}"> Politics Sales </a></span>
+
+
+</p>

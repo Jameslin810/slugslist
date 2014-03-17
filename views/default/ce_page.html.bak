@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Computer Engineering Page</h1>
+{{=fifth_table}}
+<p>
+    Make a posting
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_ce')}}"> Computer Engineering Sales </a></span>
+
+
+</p>

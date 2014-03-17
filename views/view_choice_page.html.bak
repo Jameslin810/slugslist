@@ -1,0 +1,20 @@
+{{extend 'layout.html'}}
+
+<style>
+ .header{
+         text-align: center;
+}
+</style>
+
+
+<div1>
+    <h1 class = "header">
+        Select Subject
+    </h1>
+    <p>
+        Welcome to Slugzlist, where UCSC students can buy, sell, OR trade books and other miscellaneous items<br>
+        <i><b>MAKE SURE YOU BUY, SELL, OR TRADE ON CAMPUS BEWARE OF SCAMS</b></i>
+    </p>
+    <span> <a class="btn" href = "{{=URL('default', 'Major_Books')}}">Art</a></span>
+
+</div1>

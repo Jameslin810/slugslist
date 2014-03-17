@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>History of Arts and Visual Culture Page</h1>
+{{=fifteenth_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_havc')}}"> History of Arts and Visual Culture Sales </a></span>
+
+
+</p>

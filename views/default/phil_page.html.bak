@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Philosophy Page</h1>
+{{=twentyfirst_table}}
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_phil')}}"> Philosophy Sales </a></span>
+
+
+</p>

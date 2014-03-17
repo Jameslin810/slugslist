@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+
+
+<p>
+    Make a posting
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_arts')}}"> Art's Sales </a></span>
+</p>
+{{=first_table}}

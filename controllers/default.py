@@ -1,0 +1,553 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a sample controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+## - call exposes all registered services (none by default)
+#########################################################################
+
+@auth.requires_login()
+def index():
+    """
+    example action using the internationalization operator T and flash
+    rendered by views/default/index.html or views/generic.html
+
+    if you need a simple wiki simply replace the two lines below with:
+    return auth.wiki()
+    """
+    image = db(db.Static_image.id == 2).select().first()
+    return dict(image=image)
+
+@auth.requires_login()
+def salesposting():
+    form = SQLFORM(db.Sales_Posting)
+    if form.process().accepted:
+        redirect(URL('default', 'index'))
+    return dict(form=form)
+
+@auth.requires_login()
+def Major_Books():
+    first_db = db.Sales_Posting
+    first_table = SQLFORM.grid(first_db,
+    searchable = False, create = False, editable = False, csv = False)
+    return dict(first_table=first_table)
+
+@auth.requires_login()
+def salesposting_anthro():
+    form_two = SQLFORM(db.Sales_Posting_Anthropology)
+    if form_two.process().accepted:
+        redirect(URL('default', 'anthro_page'))
+    return dict(form_two=form_two)
+
+@auth.requires_login()
+def anthro_page():
+    second_db = db.Sales_Posting_Anthropology
+    second_table = SQLFORM.grid(second_db, paginate = 100, maxtextlength={'Sales_Posting_Anthropology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Anthropology.Post_date, db.Sales_Posting_Anthropology.Course_title, db.Sales_Posting_Anthropology.Book_title,  db.Sales_Posting_Anthropology.Price,
+                                   db.Sales_Posting_Anthropology.Description,  db.Sales_Posting_Anthropology.Contact_email,  db.Sales_Posting_Anthropology.Item_Image],
+                       orderby=~db.Sales_Posting_Anthropology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(second_table=second_table)
+
+@auth.requires_login()
+def salesposting_biochem():
+    form_four = SQLFORM(db.Sales_Posting_Biochemistry_and_Molecular_Bio)
+    if form_four.process().accepted:
+        redirect(URL('default', 'biochem_page'))
+    return dict(form_four = form_four)
+
+@auth.requires_login()
+def biochem_page():
+    fourth_db = db.Sales_Posting_Biochemistry_and_Molecular_Bio
+    fourth_table = SQLFORM.grid(fourth_db, paginate = 100, maxtextlength={'Sales_Posting_Biochemistry_and_Molecular_Bio.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Biochemistry_and_Molecular_Bio.Post_date, db.Sales_Posting_Biochemistry_and_Molecular_Bio.Course_title, db.Sales_Posting_Biochemistry_and_Molecular_Bio.Book_title,  db.Sales_Posting_Biochemistry_and_Molecular_Bio.Price, db.Sales_Posting_Biochemistry_and_Molecular_Bio.Contact_email,  db.Sales_Posting_Biochemistry_and_Molecular_Bio.Item_Image],
+                       orderby=~db.Sales_Posting_Biochemistry_and_Molecular_Bio.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(fourth_table=fourth_table)
+
+@auth.requires_login()
+def salesposting_bio():
+    form_five = SQLFORM(db.Sales_Posting_Biology)
+    if form_five.process().accepted:
+        redirect(URL('default', 'bio_page'))
+    return dict(form_five = form_five)
+
+@auth.requires_login()
+def bio_page():
+    fifth_db = db.Sales_Posting_Biology
+    fifth_table = SQLFORM.grid(fifth_db, paginate = 100, maxtextlength={'Sales_Posting_Biology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Biology.Post_date, db.Sales_Posting_Biology.Course_title, db.Sales_Posting_Biology.Book_title,  db.Sales_Posting_Biology.Price, db.Sales_Posting_Biology.Contact_email,  db.Sales_Posting_Biology.Item_Image],
+                       orderby=~db.Sales_Posting_Biology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(fifth_table=fifth_table)
+
+@auth.requires_login()
+def salesposting_chem():
+    form_six = SQLFORM(db.Sales_Posting_Chemistry)
+    if form_six.process().accepted:
+        redirect(URL('default', 'chem_page'))
+    return dict(form_six = form_six)
+
+@auth.requires_login()
+def chem_page():
+    sixth_db = db.Sales_Posting_Chemistry
+    sixth_table = SQLFORM.grid(sixth_db, paginate = 100, maxtextlength={'Sales_Posting_Chemistry.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Chemistry.Post_date, db.Sales_Posting_Chemistry.Course_title, db.Sales_Posting_Chemistry.Book_title,  db.Sales_Posting_Chemistry.Price,
+  db.Sales_Posting_Chemistry.Contact_email,  db.Sales_Posting_Chemistry.Item_Image],
+                       orderby=~db.Sales_Posting_Chemistry.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(sixth_table=sixth_table)
+
+@auth.requires_login()
+def salesposting_ce():
+    form_seven = SQLFORM(db.Sales_Posting_Computerengineering)
+    if form_seven.process().accepted:
+        redirect(URL('default', 'ce_page'))
+    return dict(form_seven = form_seven)
+
+@auth.requires_login()
+def ce_page():
+    seventh_db = db.Sales_Posting_Computerengineering
+    seventh_table = SQLFORM.grid(seventh_db,
+    searchable = False, create = False, editable = False, csv = False)
+    return dict(seventh_table=seventh_table)
+
+@auth.requires_login()
+def salesposting_cs():
+    form_eight = SQLFORM(db.Sales_Posting_Computerscience)
+    if form_eight.process().accepted:
+        redirect(URL('default', 'cs_page'))
+    return dict(form_eight = form_eight)
+
+@auth.requires_login()
+def cs_page():
+    eighth_db = db.Sales_Posting_Computerscience
+    eighth_table = SQLFORM.grid(eighth_db, paginate = 100, maxtextlength={'Sales_Posting_Computerscience.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Computerscience.Post_date, db.Sales_Posting_Computerscience.Course_title, db.Sales_Posting_Computerscience.Book_title,  db.Sales_Posting_Computerscience.Price,
+  db.Sales_Posting_Computerscience.Contact_email,  db.Sales_Posting_Computerscience.Item_Image],
+                       orderby=~db.Sales_Posting_Computerscience.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(eighth_table=eighth_table)
+
+@auth.requires_login()
+def salesposting_earth():
+    form_nine = SQLFORM(db.Sales_Posting_Earth_Sciences_and_Ecology)
+    if form_nine.process().accepted:
+        redirect(URL('default', 'earth_page'))
+    return dict(form_nine = form_nine)
+
+@auth.requires_login()
+def earth_page():
+    ninth_db = db.Sales_Posting_Earth_Sciences_and_Ecology
+    ninth_table = SQLFORM.grid(ninth_db, paginate = 100, maxtextlength={'Sales_Posting_Earth_Sciences_and_Ecology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Earth_Sciences_and_Ecology.Post_date, db.Sales_Posting_Earth_Sciences_and_Ecology.Course_title, db.Sales_Posting_Earth_Sciences_and_Ecology.Book_title,  db.Sales_Posting_Earth_Sciences_and_Ecology.Price,  db.Sales_Posting_Earth_Sciences_and_Ecology.Contact_email,  db.Sales_Posting_Earth_Sciences_and_Ecology.Item_Image],
+                       orderby=~db.Sales_Posting_Earth_Sciences_and_Ecology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(ninth_table=ninth_table)
+
+@auth.requires_login()
+def salesposting_econ():
+    form_ten = SQLFORM(db.Sales_Posting_Economics)
+    if form_ten.process().accepted:
+        redirect(URL('default', 'econ_page'))
+    return dict(form_ten = form_ten)
+
+@auth.requires_login()
+def econ_page():
+    tenth_db = db.Sales_Posting_Economics
+    tenth_table = SQLFORM.grid(tenth_db, paginate = 100, maxtextlength={'Sales_Posting_Economics.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Economics.Post_date, db.Sales_Posting_Economics.Course_title, db.Sales_Posting_Economics.Book_title,  db.Sales_Posting_Economics.Price,  db.Sales_Posting_Economics.Contact_email,  db.Sales_Posting_Economics.Item_Image],
+                       orderby=~db.Sales_Posting_Economics.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    image = db(db.Static_image.id == 12).select().first()
+    return dict(tenth_table=tenth_table, image = image)
+
+@auth.requires_login()
+def salesposting_edu():
+    form_eleven = SQLFORM(db.Sales_Posting_Education)
+    if form_eleven.process().accepted:
+        redirect(URL('default', 'edu_page'))
+    return dict(form_eleven = form_eleven)
+
+@auth.requires_login()
+def edu_page():
+    eleventh_db = db.Sales_Posting_Education
+    eleventh_table = SQLFORM.grid(eleventh_db, paginate = 100, maxtextlength={'Sales_Posting_Education.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Education.Post_date, db.Sales_Posting_Education.Course_title, db.Sales_Posting_Education.Book_title,  db.Sales_Posting_Education.Price,  db.Sales_Posting_Education.Contact_email,  db.Sales_Posting_Education.Item_Image],
+                       orderby=~db.Sales_Posting_Education.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(eleventh_table=eleventh_table)
+
+@auth.requires_login()
+def salesposting_envs():
+    form_twelve = SQLFORM(db.Sales_Posting_Environmental_Studies)
+    if form_twelve.process().accepted:
+        redirect(URL('default', 'envs_page'))
+    return dict(form_twelve = form_twelve)
+
+@auth.requires_login()
+def envs_page():
+    twelfth_db = db.Sales_Posting_Environmental_Studies
+    twelfth_table = SQLFORM.grid(twelfth_db, paginate = 100, maxtextlength={'Sales_Posting_Environmental_Studies.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Environmental_Studies.Post_date, db.Sales_Posting_Environmental_Studies.Course_title, db.Sales_Posting_Environmental_Studies.Book_title,  db.Sales_Posting_Environmental_Studies.Price,  db.Sales_Posting_Environmental_Studies.Contact_email,  db.Sales_Posting_Environmental_Studies.Item_Image],
+                       orderby=~db.Sales_Posting_Environmental_Studies.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twelfth_table=twelfth_table)
+
+@auth.requires_login()
+def salesposting_film():
+    form_thirteen = SQLFORM(db.Sales_Posting_Film)
+    if form_thirteen.process().accepted:
+        redirect(URL('default', 'film_page'))
+    return dict(form_thirteen = form_thirteen)
+
+@auth.requires_login()
+def film_page():
+    thirteenth_db = db.Sales_Posting_Film
+    thirteenth_table = SQLFORM.grid(thirteenth_db, paginate = 100, maxtextlength={'Sales_Posting_Film.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Film.Post_date, db.Sales_Posting_Film.Course_title, db.Sales_Posting_Film.Book_title,  db.Sales_Posting_Film.Price,  db.Sales_Posting_Film.Contact_email,  db.Sales_Posting_Film.Item_Image],
+                       orderby=~db.Sales_Posting_Film.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(thirteenth_table=thirteenth_table)
+
+@auth.requires_login()
+def salesposting_hist():
+    form_fourteen = SQLFORM(db.Sales_Posting_History)
+    if form_fourteen.process().accepted:
+        redirect(URL('default', 'hist_page'))
+    return dict(form_fourteen = form_fourteen)
+
+@auth.requires_login()
+def hist_page():
+    fourteenth_db = db.Sales_Posting_History
+    fourteenth_table = SQLFORM.grid(fourteenth_db, paginate = 100, maxtextlength={'Sales_Posting_History.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_History.Post_date, db.Sales_Posting_History.Course_title, db.Sales_Posting_History.Book_title,  db.Sales_Posting_History.Price, db.Sales_Posting_History.Contact_email,  db.Sales_Posting_History.Item_Image],
+                       orderby=~db.Sales_Posting_History.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(fourteenth_table=fourteenth_table)
+
+@auth.requires_login()
+def salesposting_havc():
+    form_fifteen = SQLFORM(db.Sales_Posting_History_and_Visual_Culture)
+    if form_fifteen.process().accepted:
+        redirect(URL('default', 'havc_page'))
+    return dict(form_fifteen = form_fifteen)
+
+@auth.requires_login()
+def havc_page():
+    fifteenth_db = db.Sales_Posting_History_and_Visual_Culture
+    fifteenth_table = SQLFORM.grid(fifteenth_db, paginate = 100, maxtextlength={'Sales_Posting_History_and_Visual_Culture.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_History_and_Visual_Culture.Post_date, db.Sales_Posting_History_and_Visual_Culture.Course_title, db.Sales_Posting_History_and_Visual_Culture.Book_title,  db.Sales_Posting_History_and_Visual_Culture.Price,  db.Sales_Posting_History_and_Visual_Culture.Contact_email,  db.Sales_Posting_History_and_Visual_Culture.Item_Image],
+                       orderby=~db.Sales_Posting_History_and_Visual_Culture.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(fifteenth_table=fifteenth_table)
+
+@auth.requires_login()
+def salesposting_ling():
+    form_sixteen = SQLFORM(db.Sales_Posting_Linguistics)
+    if form_sixteen.process().accepted:
+        redirect(URL('default', 'ling_page'))
+    return dict(form_sixteen = form_sixteen)
+
+@auth.requires_login()
+def ling_page():
+    sixteenth_db = db.Sales_Posting_Linguistics
+    sixteenth_table = SQLFORM.grid(sixteenth_db, paginate = 100, maxtextlength={'Sales_Posting_Linguistics.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Linguistics.Post_date, db.Sales_Posting_Linguistics.Course_title, db.Sales_Posting_Linguistics.Book_title,  db.Sales_Posting_Linguistics.Price,  db.Sales_Posting_Linguistics.Contact_email,  db.Sales_Posting_Linguistics.Item_Image],
+                       orderby=~db.Sales_Posting_Linguistics.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(sixteenth_table=sixteenth_table)
+
+@auth.requires_login()
+def salesposting_lit():
+    form_seventeen = SQLFORM(db.Sales_Posting_Literature)
+    if form_seventeen.process().accepted:
+        redirect(URL('default', 'lit_page'))
+    return dict(form_seventeen = form_seventeen)
+
+@auth.requires_login()
+def lit_page():
+    seventeenth_db = db.Sales_Posting_Literature
+    seventeenth_table = SQLFORM.grid(seventeenth_db, paginate = 100, maxtextlength={'Sales_Posting_Literature.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Literature.Post_date, db.Sales_Posting_Literature.Course_title, db.Sales_Posting_Literature.Book_title,  db.Sales_Posting_Literature.Price,  db.Sales_Posting_Literature.Contact_email,  db.Sales_Posting_Literature.Item_Image],
+                       orderby=~db.Sales_Posting_Literature.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(seventeenth_table=seventeenth_table)
+
+@auth.requires_login()
+def salesposting_marine():
+    form_eighteen = SQLFORM(db.Sales_Posting_Marine_Biology)
+    if form_eighteen.process().accepted:
+        redirect(URL('default', 'marine_page'))
+    return dict(form_eighteen = form_eighteen)
+
+@auth.requires_login()
+def marine_page():
+    eighteenth_db = db.Sales_Posting_Marine_Biology
+    eighteenth_table = SQLFORM.grid(eighteenth_db, paginate = 100, maxtextlength={'Sales_Posting_Marine_Biology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Marine_Biology.Post_date, db.Sales_Posting_Marine_Biology.Course_title, db.Sales_Posting_Marine_Biology.Book_title,  db.Sales_Posting_Marine_Biology.Price,  db.Sales_Posting_Marine_Biology.Contact_email,  db.Sales_Posting_Marine_Biology.Item_Image],
+                       orderby=~db.Sales_Posting_Marine_Biology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(eighteenth_table=eighteenth_table)
+
+@auth.requires_login()
+def salesposting_math():
+    form_nineteen = SQLFORM(db.Sales_Posting_Mathematics)
+    if form_nineteen.process().accepted:
+        redirect(URL('default', 'math_page'))
+    return dict(form_nineteen = form_nineteen)
+
+@auth.requires_login()
+def math_page():
+    nineteenth_db = db.Sales_Posting_Mathematics
+    nineteenth_table = SQLFORM.grid(nineteenth_db, paginate = 100, maxtextlength={'Sales_Posting_Mathematics.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Mathematics.Post_date, db.Sales_Posting_Mathematics.Course_title, db.Sales_Posting_Mathematics.Book_title,  db.Sales_Posting_Mathematics.Price,  db.Sales_Posting_Mathematics.Contact_email,  db.Sales_Posting_Mathematics.Item_Image],
+                       orderby=~db.Sales_Posting_Mathematics.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(nineteenth_table=nineteenth_table)
+
+@auth.requires_login()
+def salesposting_music():
+    form_twenty = SQLFORM(db.Sales_Posting_Music)
+    if form_twenty.process().accepted:
+        redirect(URL('default', 'music_page'))
+    return dict(form_twenty = form_twenty)
+
+@auth.requires_login()
+def music_page():
+    twentieth_db = db.Sales_Posting_Music
+    twentieth_table = SQLFORM.grid(twentieth_db, paginate = 100, maxtextlength={'Sales_Posting_Music.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Music.Post_date, db.Sales_Posting_Music.Course_title, db.Sales_Posting_Music.Book_title,  db.Sales_Posting_Music.Price,  db.Sales_Posting_Music.Contact_email,  db.Sales_Posting_Music.Item_Image],
+                       orderby=~db.Sales_Posting_Music.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentieth_table=twentieth_table)
+
+@auth.requires_login()
+def salesposting_phil():
+    form_twentyone = SQLFORM(db.Sales_Posting_Philosophy)
+    if form_twentyone.process().accepted:
+        redirect(URL('default', 'phil_page'))
+    return dict(form_twentyone = form_twentyone)
+
+@auth.requires_login()
+def phil_page():
+    twentyfirst_db = db.Sales_Posting_Philosophy
+    twentyfirst_table = SQLFORM.grid(twentyfirst_db, paginate = 100, maxtextlength={'Sales_Posting_Philosophy.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Philosophy.Post_date, db.Sales_Posting_Philosophy.Course_title, db.Sales_Posting_Philosophy.Book_title,  db.Sales_Posting_Philosophy.Price,  db.Sales_Posting_Philosophy.Contact_email,  db.Sales_Posting_Philosophy.Item_Image],
+                       orderby=~db.Sales_Posting_Philosophy.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyfirst_table=twentyfirst_table)
+
+@auth.requires_login()
+def salesposting_physics():
+    form_twentytwo = SQLFORM(db.Sales_Posting_Physics)
+    if form_twentytwo.process().accepted:
+        redirect(URL('default', 'physics_page'))
+    return dict(form_twentytwo = form_twentytwo)
+
+@auth.requires_login()
+def physics_page():
+    twentysecondth_db = db.Sales_Posting_Physics
+    twentysecondth_table = SQLFORM.grid(twentysecondth_db, paginate = 100, maxtextlength={'Sales_Posting_Physics.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Physics.Post_date, db.Sales_Posting_Physics.Course_title, db.Sales_Posting_Physics.Book_title,  db.Sales_Posting_Physics.Price,  db.Sales_Posting_Physics.Contact_email,  db.Sales_Posting_Physics.Item_Image],
+                       orderby=~db.Sales_Posting_Physics.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentysecondth_table=twentysecondth_table)
+
+@auth.requires_login()
+def salesposting_politics():
+    form_twentythree = SQLFORM(db.Sales_Posting_Politics)
+    if form_twentythree.process().accepted:
+        redirect(URL('default', 'politics_page'))
+    return dict(form_twentythree = form_twentythree)
+
+@auth.requires_login()
+def politics_page():
+    twentythird_db = db.Sales_Posting_Politics
+    twentythird_table = SQLFORM.grid(twentythird_db, paginate = 100, maxtextlength={'Sales_Posting_Politics.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Politics.Post_date, db.Sales_Posting_Politics.Course_title, db.Sales_Posting_Politics.Book_title,  db.Sales_Posting_Politics.Price,  db.Sales_Posting_Politics.Contact_email,  db.Sales_Posting_Politics.Item_Image],
+                       orderby=~db.Sales_Posting_Politics.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentythird_table=twentythird_table)
+
+@auth.requires_login()
+def salesposting_psych():
+    form_twentyfour = SQLFORM(db.Sales_Posting_Psychology)
+    if form_twentyfour.process().accepted:
+        redirect(URL('default', 'psych_page'))
+    return dict(form_twentyfour = form_twentyfour)
+
+@auth.requires_login()
+def psych_page():
+    twentyfourth_db = db.Sales_Posting_Psychology
+    twentyfourth_table = SQLFORM.grid(twentyfourth_db, paginate = 100, maxtextlength={'Sales_Posting_Psychology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Psychology.Post_date, db.Sales_Posting_Psychology.Course_title, db.Sales_Posting_Psychology.Book_title,  db.Sales_Posting_Psychology.Price,  db.Sales_Posting_Psychology.Contact_email,  db.Sales_Posting_Psychology.Item_Image],
+                       orderby=~db.Sales_Posting_Psychology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyfourth_table=twentyfourth_table)
+
+@auth.requires_login()
+def salesposting_socio():
+    form_twentyfive = SQLFORM(db.Sales_Posting_Sociology)
+    if form_twentyfive.process().accepted:
+        redirect(URL('default', 'socio_page'))
+    return dict(form_twentyfive = form_twentyfive)
+
+@auth.requires_login()
+def socio_page():
+    twentyfifth_db = db.Sales_Posting_Sociology
+    twentyfifth_table = SQLFORM.grid(twentyfifth_db, paginate = 100, maxtextlength={'Sales_Posting_Sociology.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Sociology.Post_date, db.Sales_Posting_Sociology.Course_title, db.Sales_Posting_Sociology.Book_title,  db.Sales_Posting_Sociology.Price,  db.Sales_Posting_Sociology.Contact_email,  db.Sales_Posting_Sociology.Item_Image],
+                       orderby=~db.Sales_Posting_Sociology.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyfifth_table=twentyfifth_table)
+
+@auth.requires_login()
+def salesposting_tim():
+    form_twentysix = SQLFORM(db.Sales_Posting_Technology_and_Information_Management)
+    if form_twentysix.process().accepted:
+        redirect(URL('default', 'tim_page'))
+    return dict(form_twentysix = form_twentysix)
+
+@auth.requires_login()
+def tim_page():
+    twentysixth_db = db.Sales_Posting_Technology_and_Information_Management
+    twentysixth_table = SQLFORM.grid(twentysixth_db, paginate = 100, maxtextlength={'Sales_Posting_Technology_and_Information_Management.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Technology_and_Information_Management.Post_date, db.Sales_Posting_Technology_and_Information_Management.Course_title,  db.Sales_Posting_Technology_and_Information_Management.Book_title,  db.Sales_Posting_Technology_and_Information_Management.Price, db.Sales_Posting_Technology_and_Information_Management.Contact_email,  db.Sales_Posting_Technology_and_Information_Management.Item_Image],
+                       orderby=~db.Sales_Posting_Technology_and_Information_Management.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    image = db(db.Static_image.id == 3).select().first()
+    return dict(twentysixth_table=twentysixth_table, image = image)
+
+@auth.requires_login()
+def salesposting_writing():
+    form_twentyseven = SQLFORM(db.Sales_Posting_Writing)
+    if form_twentyseven.process().accepted:
+        redirect(URL('default', 'writing_page'))
+    return dict(form_twentyseven = form_twentyseven)
+
+@auth.requires_login()
+def writing_page():
+    twentyseventh_db = db.Sales_Posting_Writing
+    twentyseventh_table = SQLFORM.grid(twentyseventh_db, paginate = 100, maxtextlength={'Sales_Posting_Writing.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Writing.Post_date, db.Sales_Posting_Writing.Course_title, db.Sales_Posting_Writing.Book_title,  db.Sales_Posting_Writing.Price,  db.Sales_Posting_Writing.Contact_email,  db.Sales_Posting_Writing.Item_Image],
+                       orderby=~db.Sales_Posting_Writing.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyseventh_table=twentyseventh_table)
+
+@auth.requires_login()
+def salesposting_misc():
+    form_twentyeight = SQLFORM(db.Sales_Posting_Other_and_Misc)
+    if form_twentyeight.process().accepted:
+        redirect(URL('default', 'misc_page'))
+    return dict(form_twentyeight = form_twentyeight)
+
+@auth.requires_login()
+def misc_page():
+    twentyeighth_db = db.Sales_Posting_Other_and_Misc
+    twentyeighth_table = SQLFORM.grid(twentyeighth_db, paginate = 100, maxtextlength={'Sales_Posting_Other_and_Misc.Item_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_Other_and_Misc.Post_date, db.Sales_Posting_Other_and_Misc.Item_title,  db.Sales_Posting_Other_and_Misc.Price,  db.Sales_Posting_Other_and_Misc.Contact_email,  db.Sales_Posting_Other_and_Misc.Item_Image],
+                       orderby=~db.Sales_Posting_Other_and_Misc.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyeighth_table=twentyeighth_table)
+
+@auth.requires_login()
+def salesposting_lals():
+    form_twentynine = SQLFORM(db.Sales_Posting_LALS)
+    if form_twentynine.process().accepted:
+        redirect(URL('default', 'misc_page'))
+    return dict(form_twentynine = form_twentynine)
+
+@auth.requires_login()
+def lals_page():
+    twentyninth_db = db.Sales_Posting_LALS
+    twentyninth_table = SQLFORM.grid(twentyninth_db, paginate = 100, maxtextlength={'Sales_Posting_LALS.Book_title' : 100},
+    searchable = False, fields = [db.Sales_Posting_LALS.Post_date, db.Sales_Posting_LALS.Course_title, db.Sales_Posting_LALS.Book_title,  db.Sales_Posting_LALS.Price,  db.Sales_Posting_LALS.Contact_email, db.Sales_Posting_LALS.Item_Image],
+                       orderby=~db.Sales_Posting_LALS.Post_date,
+                       csv = False,
+                       create=False, editable = False, deletable = False)
+    return dict(twentyninth_table=twentyninth_table)
+
+######
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/manage_users (requires membership in
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())
+
+
+@cache.action()
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
+
+
+@auth.requires_signature()
+def data():
+    """
+    http://..../[app]/default/data/tables
+    http://..../[app]/default/data/create/[table]
+    http://..../[app]/default/data/read/[table]/[id]
+    http://..../[app]/default/data/update/[table]/[id]
+    http://..../[app]/default/data/delete/[table]/[id]
+    http://..../[app]/default/data/select/[table]
+    http://..../[app]/default/data/search/[table]
+    but URLs must be signed, i.e. linked with
+      A('table',_href=URL('data/tables',user_signature=True))
+    or with the signed load operator
+      LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
+    """
+    return dict(form=crud())

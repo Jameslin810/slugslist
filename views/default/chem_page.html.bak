@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Chemistry Page</h1>
+{{=sixth_table}}
+<p>
+    Make a posting    
+    <br>
+    <span> <a class ="btn" href= "{{=URL('default', 'salesposting_chem')}}"> Chemistry Sales </a></span>
+
+
+</p>
